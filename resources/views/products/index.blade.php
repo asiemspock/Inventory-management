@@ -6,8 +6,8 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Products</div>
-				<a href="{{url('products/create')}}">Add Product</a>
-                <div class="card-body">
+					<a href="{{url('products/create')}}">Add Product</a>
+                	<div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
@@ -27,14 +27,17 @@
 						</thead>
 						<tbody>
 							<?php $sum=0; $user_id=5;?>
+							
 							@foreach ($products as $product)
 								<tr>
 									<td> {{ $product->id }}</td>
 									<td><a href="{{url('products/' .$product->id)}}"><?php echo $product->name ?></a></td>
 									<td><?php echo $product->category_id ?></td>
-									@foreach ($product->tags as $tag)	
-										<td> <a href="{{url('tags/' .$tag->id .'/filter')}}"> <span class="badge badge-secondary"><?php echo $tag->name ?> </span> </td>  
-									@endforeach
+									<td> 
+										@foreach ($product->tags as $tag)	
+										 <a href="{{url('tags/' .$tag->id .'/filter')}}"> <span class="badge badge-secondary"><?php echo $tag->name ?> </span> 
+										@endforeach 
+									</td>
 									<td><?php echo $user_id ?> </td>
 									<td><?php echo $product->price;  $sum+=$product->price; ?></td>
 								<!-- <td><?php //echo $user->id ?> </td> -->

@@ -12,6 +12,12 @@ class Product extends Model
     }
     public function tags()
     {
+        // $tag = App\Tag::find();
+        // foreach ($tag->products as $product) {
+        //     echo $product->pivot->$product['name']; 
+        // }
         return $this->belongsToMany(\App\Tag::class, 'product_tag', 'product_id', 'tag_id');
+        //$products = App\Tag::find(1)->products()->orderBy('name')->get();
+
     }
 }

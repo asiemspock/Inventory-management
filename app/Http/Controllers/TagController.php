@@ -101,6 +101,7 @@ class TagController extends Controller
     public function filter(Tag $tag)
     {
         $products= $tag->products;
+        //dd($products);
         return view('products.index', compact ('products'));
     }
 }

@@ -47,7 +47,7 @@ Route::post('/tags', 'TagController@store');
 Route::get('/tags/{id}/edit', 'TagController@edit');
 Route::put('/tags/{id}','TagController@update');
 Route::delete('/tags/{id}','TagController@destroy');
-Route::get('/tags/{id}filter', 'TagController@filter');
+Route::get('/tags/{id}/filter', 'TagController@filter');
 
 
 Auth::routes();

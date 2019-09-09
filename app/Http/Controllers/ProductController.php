@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Mail;
 
 class ProductController extends Controller
 {
@@ -52,13 +53,14 @@ class ProductController extends Controller
         }
 
         session()->flash('message', 'Product successfully created');
-        //dd($request->all());
-        // $data = $request->all();
-        // $data['category_id'] = 1;
-        
-        // \App\Product::create($request->all());
 
-         return redirect('products');
+        $data = array('product' => $product);
+        
+        Mail::send('emails.product_created', $data, function($message) {
+            $message->to('abc@gmail.com', 'laravel eMail Tutorial')->subject ('Laravel Basic Testing Mail');
+            $message->from('xyz@gmail.com', 'Ashim Shrestha');
+        });
+        return redirect('products');
     }
     /**
      * Display the specified resource.
